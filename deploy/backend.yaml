@@ -5,7 +5,7 @@ metadata:
   labels:
     app: backend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backend
@@ -27,14 +27,23 @@ spec:
           value: postgres
         - name: DATABASE_PASSWORD
           value: postgres
-        resources:
+        resources: # pod资源限制 已修改小 
           requests:
-            memory: "128Mi"
-            cpu: "128m"
+            memory: "18Mi"
+            cpu: "1m"
           limits:
-            memory: "256Mi"
-            cpu: "256m"
-        readinessProbe: 
+            memory: "20Mi"
+            cpu: "2m"
+            #  httpGet 下的几个字段，path 字段的含义是“通过请求 healthy 接口来判断”，Port
+            # 字段指定了 Python 后端服务的监听端口 5000，scheme 字段代表协议。
+            # 探针请求的完整路径为：http://PodIP:5000/healthy，相当于以 Get 的方式主动访问业务接口，
+            # 当接口返回 200-399 状态码时，则视为本次探针请求成功
+            # initialDelaySeconds 的含义是在容器启动之后，延迟 10 秒钟再进行第一次探针检查。
+            # failureThreshold 的含义是，如果连续 5 次探针失败则代表 Readiness 探针失败，
+            # Pod 状态为 NotReady，此时 Pod 不会接收外部请求。periodSeconds 的含义是探针每 10 秒钟轮询检测 1 次。
+            # successThreshold 的含义是只要探针成功 1 次就代表探针成功了，Pod 状态为 Ready 表示可以接收外部请求。
+            # timeoutSeconds 代表探针的超时时间为 1 秒。
+        readinessProbe: #就绪探针
           httpGet:
             path: /healthy
             port: 5000
@@ -44,7 +53,7 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 1
-        livenessProbe: 
+        livenessProbe: #存活探针
           httpGet:
             path: /healthy
             port: 5000
@@ -53,7 +62,7 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 1
-        startupProbe: 
+        startupProbe: #StartupProbe 探针
           httpGet:
             path: /healthy
             port: 5000
