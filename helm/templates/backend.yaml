@@ -30,11 +30,11 @@ spec:
           value: "{{ .Values.database.password }}"
         resources:
           requests:
-            memory: "128Mi"
-            cpu: "128m"
+            memory: "18Mi"
+            cpu: "18m"
           limits:
-            memory: "256Mi"
-            cpu: "256m"
+            memory: "25Mi"
+            cpu: "25m"
         readinessProbe: 
           httpGet:
             path: /healthy
