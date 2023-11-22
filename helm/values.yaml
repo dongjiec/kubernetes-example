@@ -1,11 +1,11 @@
 frontend:
   image: dongjie66/frontend #lyzhang1999->dongjie66
-  tag: '1276e23'
+  tag: 'latest'  #1276e23->latest
   autoscaling:
     averageUtilization: 90
 backend:
   image: dongjie66/backend #lyzhang1999->dongjie66
-  tag: '1276e23'
+  tag: 'latest' #1276e23->latest
   autoscaling:
     averageUtilization: 90
 database:
