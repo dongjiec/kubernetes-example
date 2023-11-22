@@ -1,12 +1,11 @@
 frontend:
   image: dongjie66/frontend
-  tag: latest
-
+  tag: 410581a
   autoscaling:
     averageUtilization: 90
 backend:
   image: dongjie66/backend
-  tag: latest
+  tag: 410581a
   autoscaling:
     averageUtilization: 90
 database:
