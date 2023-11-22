@@ -31,10 +31,10 @@ spec:
         resources:
           requests:
             memory: "18Mi"
-            cpu: "8m" #"16->8"
+            cpu: "1m" #"16->8"
           limits:
             memory: "25Mi"
-            cpu: "10m" #"16->8"
+            cpu: "5m" #"16->8"
         readinessProbe: 
           httpGet:
             path: /healthy
