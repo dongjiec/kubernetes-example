@@ -80,3 +80,18 @@ root 10:53:49 /mnt/d/gitops/kubernetes-example
 $ 
 
 
+
+$ helm registry login -u dongjie66 https://ghcr.io
+Password: token here
+Login Succeeded
+
+
+ $ helm push kubernetes-example-0.1.0.tgz oci://ghcr.io/dongjie66/helm
+
+Pushed: ghcr.io/lyzhang1999/helm/kubernetes-example:0.1.0
+Digest: sha256:8a0cc4a2ac00f5b1f7a50d6746d54a2ecc96df6fd419a70614fe2b9b975c4f42
+
+$ helm push kubernetes-example-0.1.0.tgz oci://ghcr.io/dongjie66/helm
+
+Pushed: ghcr.io/lyzhang1999/helm/kubernetes-example:0.1.0
+Digest: sha256:8a0cc4a2ac00f5b1f7a50d6746d54a2ecc96df6fd419a70614fe2b9b975c4f42
