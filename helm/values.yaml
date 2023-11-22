@@ -1,6 +1,7 @@
 frontend:
   image: dongjie66/frontend
   tag: latest
+
   autoscaling:
     averageUtilization: 90
 backend:
