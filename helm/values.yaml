@@ -1,11 +1,11 @@
 frontend:
   image: dongjie66/frontend
-  tag: 410581a
+  tag: 0d246ef
   autoscaling:
     averageUtilization: 90
 backend:
   image: dongjie66/backend
-  tag: 410581a
+  tag: 0d246ef
   autoscaling:
     averageUtilization: 90
 database:
