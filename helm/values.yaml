@@ -1,11 +1,11 @@
 frontend:
-  image: dongjie66/frontend #lyzhang1999->dongjie66
-  tag: 'latest'  #1276e23->latest
+  image: dongjie66/frontend
+  tag: f263e90
   autoscaling:
     averageUtilization: 90
 backend:
-  image: dongjie66/backend #lyzhang1999->dongjie66
-  tag: 'latest' #1276e23->latest
+  image: dongjie66/backend
+  tag: f263e90
   autoscaling:
     averageUtilization: 90
 database:
@@ -13,4 +13,3 @@ database:
   uri: pg-service
   username: postgres
   password: postgres
-  
